@@ -3,7 +3,7 @@
 This repository is a Jenkins Shared Library implementing a reusable CI/CD pipeline for containerized Java applications (Maven). Drop into Jenkins as a Global Pipeline Library and call from your repo's `Jenkinsfile`.
 
 ## Structure
-- `vars/ciPipeline.groovy` - main pipeline entrypoint
+- `vars/cicdPipeline.groovy` - main pipeline entrypoint
 - `vars/notify.groovy` - notification helper (Slack)
 - `src/org/company/helper/DockerHelper.groovy` - utility class for Docker build/push
 - `resources/k8s/deployment.yaml.template` - k8s deployment template (image placeholder)
@@ -12,7 +12,7 @@ This repository is a Jenkins Shared Library implementing a reusable CI/CD pipeli
 1. Add this repository as a **Global Pipeline Library**:
    - Jenkins → Manage Jenkins → Configure System → Global Pipeline Libraries
    - Name: `shared-lib` (example)
-   - Default branch: `main`
+   - Default branch: `release-V1.0`
    - Set retrieval method (e.g., Modern SCM), point to this Git repo.
 
 2. Create required credentials in Jenkins:
