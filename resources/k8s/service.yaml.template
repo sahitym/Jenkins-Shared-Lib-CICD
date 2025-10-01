@@ -1,0 +1,16 @@
+# resources/k8s/service.yaml.template
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${SERVICE_NAME:-myapp}
+  namespace: ${KUBE_NAMESPACE:-staging}
+  labels:
+    app: ${APP_LABEL:-myapp}
+spec:
+  type: ClusterIP
+  selector:
+    app: ${APP_LABEL:-myapp}
+  ports:
+    - name: http
+      port: ${SERVICE_PORT:-80}
+      targetPort: ${CONTAINER_PORT:-8080}

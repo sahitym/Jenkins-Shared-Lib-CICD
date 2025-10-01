@@ -1,0 +1,20 @@
+# resources/k8s/namespace.yaml.template
+# Template for creating a Kubernetes namespace via envsubst
+# This is applied automatically in eksDeploy.groovy if createNamespace=true
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${KUBE_NAMESPACE:-staging}
+  labels:
+    name: ${KUBE_NAMESPACE:-staging}
+    environment: ${ENVIRONMENT:-dev}
+
+---
+# Notes:
+# - Replace ${KUBE_NAMESPACE} and ${ENVIRONMENT} with environment variables using envsubst.
+# - Example from Jenkins pipeline:
+#     export KUBE_NAMESPACE=staging ENVIRONMENT=dev
+#     envsubst < ${WORKSPACE}/resources/k8s/namespace.yaml.template | kubectl apply -f -
+# - The eksDeploy.groovy library already runs this logic if createNamespace is true.
+# - You can safely re-apply this template; it is idempotent in Kubernetes.
