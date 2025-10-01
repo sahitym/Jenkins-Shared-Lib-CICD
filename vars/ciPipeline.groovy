@@ -29,7 +29,7 @@ def call(Map params = [:]) {
             withSonarQubeEnv(params.sonarServerId) {
               sh '''
                 echo "=== SonarQube ==="
-                mvn -B clean verify sonar:sonar -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.projectKey=java-web-app-demo
+                mvn -B clean verify sonar:sonar -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.projectKey=java-web-app-demo-1
               '''
             }
           }
